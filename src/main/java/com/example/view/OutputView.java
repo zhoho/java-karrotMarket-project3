@@ -3,6 +3,8 @@ package com.example.view;
 import com.example.Constant.constant;
 import com.example.Item;
 
+import java.util.ArrayList;
+
 public class OutputView {
     public static final String PRINTSTARTMESSAGE = "당근마켓에 오신것을 환영합니다 메뉴를 선택해주세요";
     public static final String DIVISIONLINE = "--------------------------------------";
@@ -30,6 +32,19 @@ public class OutputView {
     public static void itemEmptyCheck() {
         if(Item.items.isEmpty()) {
             throw new IllegalArgumentException(ITEMSEMPTY);
+        }
+    }
+
+    public static void findMatchItemSeller(String sellerForEdit) {
+        for (ArrayList<Object> list : Item.items) {
+            if (!list.isEmpty() && list.get(list.size() - constant.THREE).equals(sellerForEdit)) {
+                System.out.println(DIVISIONLINE);
+                System.out.println(list.get(0));
+                System.out.println(PRINTSELLER + list.get(1));
+                System.out.println(PRINTITEMNAME + list.get(2));
+                System.out.println(PRINTPRICE + list.get(3));
+                System.out.println(DIVISIONLINE);
+            }
         }
     }
 }
