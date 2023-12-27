@@ -1,11 +1,10 @@
 package com.example.view;
 
 import com.example.Constant.constant;
-import com.example.Delete;
+import com.example.crud.Delete;
 import com.example.Item;
-import com.example.Update;
+import com.example.crud.Update;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class InputView {
