@@ -1,6 +1,7 @@
 package com.example.view;
 
 import com.example.Constant.constant;
+import com.example.Delete;
 import com.example.Item;
 import com.example.Update;
 
@@ -17,6 +18,8 @@ public class InputView {
     public static final String INPUTDATE = "등록일자";
     public static final String PRINTEDITMESSAGE = "수정할 제품의 판매자를 입력해 주세요";
     public static final String PRINTEDITITEMINDEX = "수정할 제품의 번호를 입력해 주세요";
+    public static final String PRINTDELETEINDEX = "삭제할 제품의 번호를 입력해 주세요";
+    public static final String WARNINGDELETE = "정말로 삭제하시겠습니까? 삭제를 원하신다면 Yes를 입력해주세요";
     public static final String ENTER = "\n";
     public static int id = constant.ZERO;
     public static int selectMenu(){
@@ -50,8 +53,8 @@ public class InputView {
     public static void getItemSeller() {
         Scanner in = new Scanner(System.in);
         System.out.print(PRINTEDITMESSAGE + ENTER + INPUTSELLER);
-        String sellerForEdit = in.nextLine();
-        OutputView.findMatchItemSeller(sellerForEdit);
+        String seller = in.nextLine();
+        OutputView.printMatchItemSeller(seller);
     }
 
     public static void getEditItemIndex() {
@@ -77,5 +80,15 @@ public class InputView {
         System.out.print(INPUTPRICE);
         String price = in.nextLine();
         Update.editToInput(indexForEdit, price);
+    }
+
+    public static void getDeleteItemIndex() {
+        Scanner in = new Scanner(System.in);
+        Scanner on = new Scanner(System.in);
+        System.out.println(PRINTDELETEINDEX);
+        int indexForDelete = in.nextInt();
+        System.out.println(WARNINGDELETE);
+        String input = on.nextLine();
+        Delete.deleteCheck(input, indexForDelete);
     }
 }

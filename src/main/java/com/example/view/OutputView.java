@@ -35,9 +35,9 @@ public class OutputView {
         }
     }
 
-    public static void findMatchItemSeller(String sellerForEdit) {
+    public static void printMatchItemSeller(String seller) {
         for (ArrayList<Object> list : Item.items) {
-            if (!list.isEmpty() && list.get(list.size() - constant.THREE).equals(sellerForEdit)) {
+            if (!list.isEmpty() && list.get(list.size() - constant.THREE).equals(seller)) {
                 System.out.println(DIVISIONLINE);
                 System.out.println(list.get(0));
                 System.out.println(PRINTSELLER + list.get(1));
