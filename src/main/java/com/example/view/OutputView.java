@@ -9,12 +9,14 @@ public class OutputView {
     public static final String PRINTSELLER = "판매자 : ";
     public static final String PRINTITEMNAME = "상품명 : ";
     public static final String PRINTPRICE = "가격 : ";
+    public static final String ITEMSEMPTY = "[ERROR] 현재 등록된 상품이 없습니다!";
 
     public static void printStartMessage() {
         System.out.println(PRINTSTARTMESSAGE);
     }
 
     public static void printAllItems() {
+        itemEmptyCheck();
         for(int i = constant.ZERO; i < Item.items.size(); i++) {
             System.out.println(DIVISIONLINE);
             System.out.println(Item.items.get(i).get(0));
@@ -22,6 +24,12 @@ public class OutputView {
             System.out.println(PRINTITEMNAME + Item.items.get(i).get(2));
             System.out.println(PRINTPRICE + Item.items.get(i).get(3));
             System.out.println(DIVISIONLINE);
+        }
+    }
+
+    public static void itemEmptyCheck() {
+        if(Item.items.isEmpty()) {
+            throw new IllegalArgumentException(ITEMSEMPTY);
         }
     }
 }
