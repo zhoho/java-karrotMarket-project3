@@ -2,6 +2,7 @@ package com.example.view;
 
 import com.example.Constant.constant;
 import com.example.Item;
+import com.example.Update;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -64,22 +65,17 @@ public class InputView {
         Scanner in = new Scanner(System.in);
         indexForEdit -= constant.ONE;
         System.out.println(PRINTEDITITEMINFO);
+
         System.out.print(INPUTSELLER);
         String seller = in.nextLine();
-        if (!seller.trim().isEmpty()) {
-            Item.items.get(indexForEdit).set(constant.ONE, seller);
-        }
+        Update.editToInput(indexForEdit, seller);
 
         System.out.print(INPUTITEMNAME);
         String itemName = in.nextLine();
-        if (!itemName.trim().isEmpty()) {
-            Item.items.get(indexForEdit).set(constant.TWO, itemName);
-        }
+        Update.editToInput(indexForEdit, itemName);
 
         System.out.print(INPUTPRICE);
         String price = in.nextLine();
-        if (!itemName.trim().isEmpty()) {
-            Item.items.get(indexForEdit).set(constant.THREE, Integer.parseInt(price));
-        }
+        Update.editToInput(indexForEdit, price);
     }
 }

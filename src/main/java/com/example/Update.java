@@ -9,4 +9,10 @@ public class Update {
         InputView.getItemSeller();
         InputView.getEditItemIndex();
     }
+
+    public static void editToInput(int indexForEdit, String input) {
+        if (!input.trim().isEmpty()) {
+            Item.items.get(indexForEdit).set(constant.ONE, input);
+        }
+    }
 }
