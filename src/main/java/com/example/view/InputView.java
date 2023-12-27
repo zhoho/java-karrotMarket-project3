@@ -16,10 +16,11 @@ public class InputView {
     public static final String INPUTITEMNAME = "상품명:";
     public static final String INPUTPRICE = "판매가격:";
     public static final String INPUTDATE = "등록일자";
-    public static final String PRINTEDITMESSAGE = "수정할 제품의 판매자를 입력해 주세요";
+    public static final String PRINTSELLERMESSAGE = "제품의 판매자를 입력해 주세요";
     public static final String PRINTEDITITEMINDEX = "수정할 제품의 번호를 입력해 주세요";
     public static final String PRINTDELETEINDEX = "삭제할 제품의 번호를 입력해 주세요";
     public static final String WARNINGDELETE = "정말로 삭제하시겠습니까? 삭제를 원하신다면 Yes를 입력해주세요";
+    public static final String PRINTSEARCHITEMNAME = "검색할 제품의 이름을 입력해 주세요";
     public static final String ENTER = "\n";
     public static int id = constant.ZERO;
     public static int selectMenu(){
@@ -52,7 +53,7 @@ public class InputView {
 
     public static void getItemSeller() {
         Scanner in = new Scanner(System.in);
-        System.out.print(PRINTEDITMESSAGE + ENTER + INPUTSELLER);
+        System.out.print(PRINTSELLERMESSAGE + ENTER + INPUTSELLER);
         String seller = in.nextLine();
         OutputView.printMatchItemSeller(seller);
     }
@@ -90,5 +91,12 @@ public class InputView {
         System.out.println(WARNINGDELETE);
         String input = on.nextLine();
         Delete.deleteCheck(input, indexForDelete);
+    }
+
+    public static void getItemName() {
+        Scanner in = new Scanner(System.in);
+        System.out.print(PRINTSEARCHITEMNAME + ENTER + INPUTITEMNAME);
+        String itemName = in.nextLine();
+        OutputView.printMatchItemName(itemName);
     }
 }

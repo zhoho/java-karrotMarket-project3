@@ -2,6 +2,9 @@ package com.example.controller;
 
 import com.example.Constant.constant;
 import com.example.Create;
+import com.example.Delete;
+import com.example.Read;
+import com.example.Update;
 import com.example.view.InputView;
 import com.example.view.OutputView;
 
@@ -15,7 +18,7 @@ public class KarrotMarketController {
             int selectedMenu = InputView.selectMenu();
 
             if(selectedMenu == constant.ZERO) {
-                System.out.println("종료하기");
+                System.out.println(constant.MENUEXIT);
                 break;
             }
             menuRouter(selectedMenu);
@@ -24,19 +27,19 @@ public class KarrotMarketController {
 
     public void menuRouter(int selectedMenu) {
             if(selectedMenu == constant.ONE) {
-                System.out.println("조회하기");
+                OutputView.printAllItems();
             }
             else if(selectedMenu == constant.TWO) {
                 Create.addItem();
             }
             else if(selectedMenu == constant.THREE) {
-                System.out.println("수정하기");
+                Update.updateItem();
             }
             else if(selectedMenu == constant.FOUR) {
-                System.out.println("삭제하기");
+                Delete.deleteItem();
             }
             else if(selectedMenu == constant.FIVE) {
-                System.out.println("검색하기");
+                Read.searchItems();
             }
             else {
                 throw new IllegalArgumentException("[ERROR] 잘못된 입력");

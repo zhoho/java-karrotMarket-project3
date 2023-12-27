@@ -47,4 +47,17 @@ public class OutputView {
             }
         }
     }
+
+    public static void printMatchItemName(String itemName) {
+        for (ArrayList<Object> list : Item.items) {
+            if (!list.isEmpty() && list.get(list.size() - constant.TWO).equals(itemName)) {
+                System.out.println(DIVISIONLINE);
+                System.out.println(list.get(0));
+                System.out.println(PRINTSELLER + list.get(1));
+                System.out.println(PRINTITEMNAME + list.get(2));
+                System.out.println(PRINTPRICE + list.get(3));
+                System.out.println(DIVISIONLINE);
+            }
+        }
+    }
 }
