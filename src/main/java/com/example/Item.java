@@ -1,5 +1,7 @@
 package com.example;
 
+import java.util.ArrayList;
+
 public class Item {
     private int id;
     private String seller;
@@ -12,7 +14,6 @@ public class Item {
         this.price = price;
         this.itemName = itemName;
     }
-
     public int getId() {
         return id;
     }
@@ -44,4 +45,6 @@ public class Item {
     public void setPrice(int price) {
         this.price = price;
     }
+    public static ArrayList<ArrayList<Object>> items = new ArrayList<>();
+
 }
