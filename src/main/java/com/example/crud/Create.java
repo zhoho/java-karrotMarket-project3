@@ -1,5 +1,6 @@
-package com.example;
+package com.example.crud;
 
+import com.example.Item;
 import com.example.view.InputView;
 
 import java.util.ArrayList;
