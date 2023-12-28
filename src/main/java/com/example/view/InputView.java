@@ -41,28 +41,68 @@ public class InputView {
     }
 
     public static Item getItemInfo() {
-        Scanner in = new Scanner(System.in);
         System.out.println(PRINTADDITEMINFO);
 
-        System.out.print(INPUTSELLER);
-        String seller = in.nextLine();
+        String seller = getItemInfoSeller();
+        String itemName = getItemInfoSeller();
+        int price = getItemInfoPrice();
 
-        System.out.print(INPUTITEMNAME);
-        String itemName = in.nextLine();
-
-        System.out.print(INPUTPRICE);
-        String price = in.nextLine();
-        try {
-            int parsedPrice = Integer.parseInt(price);
-            if (parsedPrice < Constant.ZERO || parsedPrice >= Constant.LIMITPRICE) {
-                throw new IllegalArgumentException(ErrorMessage.INVALID_ITEM_PRICE.getMessage());
-            }
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_MENU_SELECT.getMessage());
-        }
         increseId();
-        Item item = new Item(id, seller, itemName, Integer.parseInt(price));
+        Item item = new Item(id, seller, itemName, price);
         return item;
+    }
+
+    public static String getItemInfoSeller() {
+        Scanner in = new Scanner(System.in);
+        String seller;
+        while (true) {
+            System.out.print(INPUTSELLER);
+            seller = in.nextLine();
+            if (!seller.trim().isEmpty()) {
+                break;
+            }
+            System.out.println(ErrorMessage.SELLER_INPUT_EMPTY.getMessage());
+        }
+        return seller;
+    }
+
+    public static String getItemInfoItemName() {
+        Scanner in = new Scanner(System.in);
+        String itemName;
+        while (true) {
+            System.out.print(INPUTITEMNAME);
+            itemName = in.nextLine();
+            if (!itemName.trim().isEmpty()) {
+                break;
+            }
+            System.out.println(ErrorMessage.ITEM_INPUT_EMPTY);
+        }
+        return itemName;
+    }
+
+    public static int getItemInfoPrice() {
+        Scanner in = new Scanner(System.in);
+        String price;
+        int parsedPrice;
+        while (true) {
+            System.out.print(INPUTPRICE);
+            price = in.nextLine();
+            if (price.trim().isEmpty()) {
+                System.out.println(ErrorMessage.PRICE_INPUT_EMPTY.getMessage());
+                continue;
+            }
+            try {
+                parsedPrice = Integer.parseInt(price);
+                if (parsedPrice < Constant.ZERO || parsedPrice >= Constant.LIMITPRICE) {
+                    System.out.println(ErrorMessage.INVALID_ITEM_PRICE.getMessage());
+                } else {
+                    break;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println(ErrorMessage.INVALID_MENU_SELECT.getMessage());
+            }
+        }
+        return Integer.parseInt(price);
     }
 
     public static void increseId() {
