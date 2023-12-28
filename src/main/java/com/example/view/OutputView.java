@@ -21,7 +21,8 @@ public class OutputView {
         itemEmptyCheck();
         for(int i = Constant.ZERO; i < Item.items.size(); i++) {
             System.out.println(DIVISIONLINE);
-            System.out.println(Item.items.get(i).get(0));
+//            System.out.println(Item.items.get(i).get(0));
+            System.out.println(i + Constant.ONE);
             System.out.println(PRINTSELLER + Item.items.get(i).get(1));
             System.out.println(PRINTITEMNAME + Item.items.get(i).get(2));
             System.out.println(PRINTPRICE + Item.items.get(i).get(3));
@@ -37,29 +38,35 @@ public class OutputView {
     }
 
     public static void printMatchItemSeller(String seller) {
+        int idIndex = Constant.ONE;
         for (ArrayList<Object> list : Item.items) {
-            if (!list.isEmpty() && list.get(list.size() - Constant.THREE).equals(seller)) {
+            if (!list.isEmpty() && list.get(list.size() - Constant.FOUR).equals(seller)) {
                 System.out.println(DIVISIONLINE);
-                System.out.println(list.get(0));
+//                System.out.println(list.get(0));
+                System.out.println(idIndex);
                 System.out.println(PRINTSELLER + list.get(1));
                 System.out.println(PRINTITEMNAME + list.get(2));
                 System.out.println(PRINTPRICE + list.get(3));
                 System.out.println(PRINTREGISTERTIME + list.get(4));
                 System.out.println(DIVISIONLINE);
+                idIndex++;
             }
         }
     }
 
     public static void printMatchItemName(String itemName) {
+        int idIndex = Constant.ONE;
         for (ArrayList<Object> list : Item.items) {
-            if (!list.isEmpty() && list.get(list.size() - Constant.TWO).equals(itemName)) {
+            if (!list.isEmpty() && list.get(list.size() - Constant.THREE).equals(itemName)) {
                 System.out.println(DIVISIONLINE);
-                System.out.println(list.get(0));
+//                System.out.println(list.get(0));
+                System.out.println(idIndex);
                 System.out.println(PRINTSELLER + list.get(1));
                 System.out.println(PRINTITEMNAME + list.get(2));
                 System.out.println(PRINTPRICE + list.get(3));
                 System.out.println(PRINTREGISTERTIME + list.get(4));
                 System.out.println(DIVISIONLINE);
+                idIndex++;
             }
         }
     }

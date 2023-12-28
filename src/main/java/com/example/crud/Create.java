@@ -20,6 +20,5 @@ public class Create {
                 String.valueOf(item.getPrice()),
                 item.getDateTime()
         )));
-        System.out.println(Item.items);
     }
 }
