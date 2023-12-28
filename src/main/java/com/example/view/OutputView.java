@@ -12,6 +12,7 @@ public class OutputView {
     public static final String PRINTSELLER = "판매자 : ";
     public static final String PRINTITEMNAME = "상품명 : ";
     public static final String PRINTPRICE = "가격 : ";
+    public static final String PRINTREGISTERTIME = "등록 일자 : ";
     public static void printStartMessage() {
         System.out.println(PRINTSTARTMESSAGE);
     }
@@ -24,6 +25,7 @@ public class OutputView {
             System.out.println(PRINTSELLER + Item.items.get(i).get(1));
             System.out.println(PRINTITEMNAME + Item.items.get(i).get(2));
             System.out.println(PRINTPRICE + Item.items.get(i).get(3));
+            System.out.println(PRINTREGISTERTIME + Item.items.get(i).get(4));
             System.out.println(DIVISIONLINE);
         }
     }
@@ -42,6 +44,7 @@ public class OutputView {
                 System.out.println(PRINTSELLER + list.get(1));
                 System.out.println(PRINTITEMNAME + list.get(2));
                 System.out.println(PRINTPRICE + list.get(3));
+                System.out.println(PRINTREGISTERTIME + list.get(4));
                 System.out.println(DIVISIONLINE);
             }
         }
@@ -55,6 +58,7 @@ public class OutputView {
                 System.out.println(PRINTSELLER + list.get(1));
                 System.out.println(PRINTITEMNAME + list.get(2));
                 System.out.println(PRINTPRICE + list.get(3));
+                System.out.println(PRINTREGISTERTIME + list.get(4));
                 System.out.println(DIVISIONLINE);
             }
         }

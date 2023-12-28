@@ -13,7 +13,13 @@ public class Create {
     }
 
     public static void addToItemList(Item item) {
-        Item.items.add(new ArrayList<>(Arrays.asList(String.valueOf(item.getId()), item.getSeller(), item.getItemName(), String.valueOf(item.getPrice()))));
+        Item.items.add(new ArrayList<>(Arrays.asList(
+                String.valueOf(item.getId()),
+                item.getSeller(),
+                item.getItemName(),
+                String.valueOf(item.getPrice()),
+                item.getDateTime()
+        )));
         System.out.println(Item.items);
     }
 }
