@@ -21,7 +21,6 @@ public class OutputView {
         itemEmptyCheck();
         for(int i = Constant.ZERO; i < Item.items.size(); i++) {
             System.out.println(DIVISIONLINE);
-//            System.out.println(Item.items.get(i).get(0));
             System.out.println(i + Constant.ONE);
             System.out.println(PRINTSELLER + Item.items.get(i).get(1));
             System.out.println(PRINTITEMNAME + Item.items.get(i).get(2));
@@ -42,7 +41,6 @@ public class OutputView {
         for (ArrayList<Object> list : Item.items) {
             if (!list.isEmpty() && list.get(list.size() - Constant.FOUR).equals(seller)) {
                 System.out.println(DIVISIONLINE);
-//                System.out.println(list.get(0));
                 System.out.println(idIndex);
                 System.out.println(PRINTSELLER + list.get(1));
                 System.out.println(PRINTITEMNAME + list.get(2));
@@ -59,7 +57,6 @@ public class OutputView {
         for (ArrayList<Object> list : Item.items) {
             if (!list.isEmpty() && list.get(list.size() - Constant.THREE).equals(itemName)) {
                 System.out.println(DIVISIONLINE);
-//                System.out.println(list.get(0));
                 System.out.println(idIndex);
                 System.out.println(PRINTSELLER + list.get(1));
                 System.out.println(PRINTITEMNAME + list.get(2));
