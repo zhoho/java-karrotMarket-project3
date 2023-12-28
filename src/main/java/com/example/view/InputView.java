@@ -6,6 +6,7 @@ import com.example.crud.Delete;
 import com.example.Item;
 import com.example.crud.Update;
 
+import java.lang.reflect.Array;
 import java.util.Scanner;
 
 public class InputView {
@@ -22,7 +23,6 @@ public class InputView {
     public static final String WARNINGDELETE = "정말로 삭제하시겠습니까? 삭제를 원하신다면 Yes를 입력해주세요";
     public static final String PRINTSEARCHITEMNAME = "검색할 제품의 이름을 입력해 주세요";
     public static final String ENTER = "\n";
-    public static int id = Constant.ZERO;
     public static String selectMenu(){
         System.out.println(PRINTMENU);
         Scanner in = new Scanner(System.in);
@@ -43,13 +43,19 @@ public class InputView {
     public static Item getItemInfo() {
         System.out.println(PRINTADDITEMINFO);
 
+        int id = getItemId();
         String seller = getItemInfoSeller();
-        String itemName = getItemInfoSeller();
+        String itemName = getItemInfoItemName();
         int price = getItemInfoPrice();
-
-        increseId();
         Item item = new Item(id, seller, itemName, price);
         return item;
+    }
+
+    public static int getItemId() {
+        //db 구현시 수정
+        int id;
+        id = Item.items.size();
+        return id;
     }
 
     public static String getItemInfoSeller() {
@@ -103,10 +109,6 @@ public class InputView {
             }
         }
         return Integer.parseInt(price);
-    }
-
-    public static void increseId() {
-        id += Constant.ONE;
     }
 
     public static void getItemSeller() {
