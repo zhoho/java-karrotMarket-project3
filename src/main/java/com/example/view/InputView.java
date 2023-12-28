@@ -1,6 +1,7 @@
 package com.example.view;
 
-import com.example.Constant.constant;
+import com.example.constant.Constant;
+import com.example.constant.ErrorMessage;
 import com.example.crud.Delete;
 import com.example.Item;
 import com.example.crud.Update;
@@ -21,12 +22,22 @@ public class InputView {
     public static final String WARNINGDELETE = "정말로 삭제하시겠습니까? 삭제를 원하신다면 Yes를 입력해주세요";
     public static final String PRINTSEARCHITEMNAME = "검색할 제품의 이름을 입력해 주세요";
     public static final String ENTER = "\n";
-    public static int id = constant.ZERO;
-    public static int selectMenu(){
+    public static int id = Constant.ZERO;
+    public static String selectMenu(){
         System.out.println(PRINTMENU);
         Scanner in = new Scanner(System.in);
-        int seletedMenu = in.nextInt();
-        return seletedMenu;
+        String selectedMenu;
+
+        while (true) {
+            selectedMenu = in.nextLine();
+            try {
+                Integer.parseInt(selectedMenu);
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println(ErrorMessage.INVALID_MENU_SELECT.getMessage());
+            }
+        }
+        return selectedMenu;
     }
 
     public static Item getItemInfo() {
@@ -40,14 +51,22 @@ public class InputView {
         String itemName = in.nextLine();
 
         System.out.print(INPUTPRICE);
-        int price = in.nextInt();
+        String price = in.nextLine();
+        try {
+            int parsedPrice = Integer.parseInt(price);
+            if (parsedPrice < Constant.ZERO || parsedPrice >= Constant.LIMITPRICE) {
+                throw new IllegalArgumentException(ErrorMessage.INVALID_ITEM_PRICE.getMessage());
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_MENU_SELECT.getMessage());
+        }
         increseId();
-        Item item = new Item(id, seller, itemName, price);
+        Item item = new Item(id, seller, itemName, Integer.parseInt(price));
         return item;
     }
 
     public static void increseId() {
-        id += constant.ONE;
+        id += Constant.ONE;
     }
 
     public static void getItemSeller() {
@@ -60,26 +79,35 @@ public class InputView {
     public static void getEditItemIndex() {
         Scanner in = new Scanner(System.in);
         System.out.println(PRINTEDITITEMINDEX);
-        int indexForEdit = in.nextInt();
-        findMatchItemIndex(indexForEdit);
+        String indexForEdit;
+        while (true) {
+            indexForEdit = in.nextLine();
+            try {
+                Integer.parseInt(indexForEdit);
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println(ErrorMessage.INVALID_MENU_SELECT.getMessage());
+            }
+        }
+        findMatchItemIndex(Integer.parseInt(indexForEdit));
     }
 
     public static void findMatchItemIndex(int indexForEdit) {
         Scanner in = new Scanner(System.in);
-        indexForEdit -= constant.ONE;
+        indexForEdit -= Constant.ONE;
         System.out.println(PRINTEDITITEMINFO);
 
         System.out.print(INPUTSELLER);
         String seller = in.nextLine();
-        Update.editToInput(indexForEdit, seller);
+        Update.editToInput(indexForEdit, seller, Constant.ONE);
 
         System.out.print(INPUTITEMNAME);
         String itemName = in.nextLine();
-        Update.editToInput(indexForEdit, itemName);
+        Update.editToInput(indexForEdit, itemName, Constant.TWO);
 
         System.out.print(INPUTPRICE);
         String price = in.nextLine();
-        Update.editToInput(indexForEdit, price);
+        Update.editToInput(indexForEdit, price, Constant.THREE);
     }
 
     public static void getDeleteItemIndex() {

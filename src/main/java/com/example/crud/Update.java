@@ -1,9 +1,6 @@
 package com.example.crud;
-
-import com.example.Constant.constant;
 import com.example.Item;
 import com.example.view.InputView;
-import com.example.view.OutputView;
 
 public class Update {
     public static void updateItem() {
@@ -11,9 +8,9 @@ public class Update {
         InputView.getEditItemIndex();
     }
 
-    public static void editToInput(int indexForEdit, String input) {
+    public static void editToInput(int indexForEdit, String input, int idx) {
         if (!input.trim().isEmpty()) {
-            Item.items.get(indexForEdit).set(constant.ONE, input);
+            Item.items.get(indexForEdit).set(idx, input);
         }
     }
 }

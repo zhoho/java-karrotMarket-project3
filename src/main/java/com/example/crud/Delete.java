@@ -1,6 +1,6 @@
 package com.example.crud;
 
-import com.example.Constant.constant;
+import com.example.constant.Constant;
 import com.example.Item;
 import com.example.view.InputView;
 
@@ -17,6 +17,6 @@ public class Delete {
     }
 
     public static void deleteExecute(int indexForDelete) {
-        Item.items.remove(indexForDelete - constant.ONE);
+        Item.items.remove(indexForDelete - Constant.ONE);
     }
 }

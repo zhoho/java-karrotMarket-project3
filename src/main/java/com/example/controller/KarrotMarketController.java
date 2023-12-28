@@ -1,6 +1,6 @@
 package com.example.controller;
 
-import com.example.Constant.constant;
+import com.example.constant.Constant;
 import com.example.crud.Create;
 import com.example.crud.Delete;
 import com.example.crud.Read;
@@ -15,30 +15,29 @@ public class KarrotMarketController {
 
     public void karrotFlow() {
         while(true) {
-            int selectedMenu = InputView.selectMenu();
-
-            if(selectedMenu == constant.ZERO) {
-                System.out.println(constant.MENUEXIT);
+            String selectedMenu = InputView.selectMenu();
+            if(Integer.parseInt(selectedMenu) == Constant.ZERO) {
+                System.out.println(Constant.MENUEXIT);
                 break;
             }
-            menuRouter(selectedMenu);
+            menuRouter(Integer.parseInt(selectedMenu));
         }
     }
 
     public void menuRouter(int selectedMenu) {
-            if(selectedMenu == constant.ONE) {
+            if(selectedMenu == Constant.ONE) {
                 OutputView.printAllItems();
             }
-            else if(selectedMenu == constant.TWO) {
+            else if(selectedMenu == Constant.TWO) {
                 Create.addItem();
             }
-            else if(selectedMenu == constant.THREE) {
+            else if(selectedMenu == Constant.THREE) {
                 Update.updateItem();
             }
-            else if(selectedMenu == constant.FOUR) {
+            else if(selectedMenu == Constant.FOUR) {
                 Delete.deleteItem();
             }
-            else if(selectedMenu == constant.FIVE) {
+            else if(selectedMenu == Constant.FIVE) {
                 Read.searchItems();
             }
             else {
