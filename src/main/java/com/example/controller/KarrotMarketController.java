@@ -38,7 +38,7 @@ public class KarrotMarketController {
                 Delete.deleteItem();
             }
             else if(selectedMenu == Constant.FIVE) {
-                Read.searchItems();
+                Read.searchItems(InputView.getItemName());
             }
             else {
                 throw new IllegalArgumentException("[ERROR] 잘못된 입력");

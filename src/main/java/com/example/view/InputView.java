@@ -5,6 +5,7 @@ import com.example.constant.ErrorMessage;
 import com.example.crud.Create;
 import com.example.crud.Delete;
 import com.example.Item;
+import com.example.crud.Read;
 import com.example.crud.Update;
 
 import java.util.ArrayList;
@@ -115,7 +116,7 @@ public class InputView {
         Scanner in = new Scanner(System.in);
         System.out.print(PRINTSELLERMESSAGE + ENTER + INPUTSELLER);
         String seller = in.nextLine();
-//        OutputView.printMatchItemSeller(seller);
+        Read.searchseller(seller);
     }
 
     public static void getEditItemIndex() {
@@ -136,7 +137,6 @@ public class InputView {
 
     public static void findMatchItemIndex(int indexForEdit) {
         Scanner in = new Scanner(System.in);
-        indexForEdit -= Constant.ONE;
         System.out.println(PRINTEDITITEMINFO);
 
         System.out.print(INPUTSELLER);
@@ -159,10 +159,10 @@ public class InputView {
         Delete.deleteCheck(input, indexForDelete);
     }
 
-    public static void getItemName() {
+    public static String getItemName() {
         Scanner in = new Scanner(System.in);
         System.out.print(PRINTSEARCHITEMNAME + ENTER + INPUTITEMNAME);
         String itemName = in.nextLine();
-//        OutputView.printMatchItemName(itemName);
+        return itemName;
     }
 }

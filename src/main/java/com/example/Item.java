@@ -9,15 +9,14 @@ public class Item {
     private String seller;
     private int price;
     private String itemName;
-    private LocalDateTime dateTime;
-    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("M월 d일 HH시 mm분");
+    private String dateTime;
     public static ArrayList<Item> items = new ArrayList<>();
-    public Item(int id, String seller, String itemName, int price) {
+    public Item(int id, String seller, String itemName, int price, String dateTime) {
         this.id = id;
         this.seller = seller;
         this.price = price;
         this.itemName = itemName;
-//        this.dateTime = LocalDateTime.now();
+        this.dateTime = dateTime;
 
     }
     public int getId() {
@@ -53,8 +52,9 @@ public class Item {
     }
 
     public String getDateTime() {
-        return dateTime.format(formatter);
+        return dateTime;
     }
-
-
+    public void setDateTiem(String dateTime) {
+        this.dateTime = dateTime;
+    }
 }

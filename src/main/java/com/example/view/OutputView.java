@@ -5,6 +5,7 @@ import com.example.Item;
 import com.example.constant.ErrorMessage;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class OutputView {
     public static final String PRINTSTARTMESSAGE = "당근마켓에 오신것을 환영합니다 메뉴를 선택해주세요";
@@ -25,7 +26,7 @@ public class OutputView {
             System.out.println(PRINTSELLER + Item.items.get(i).getSeller());
             System.out.println(PRINTITEMNAME + Item.items.get(i).getItemName());
             System.out.println(PRINTPRICE + Item.items.get(i).getPrice());
-//            System.out.println(PRINTREGISTERTIME + Item.items.get(i).getDateTime());
+            System.out.println(PRINTREGISTERTIME + Item.items.get(i).getDateTime());
             System.out.println(DIVISIONLINE);
         }
     }
@@ -36,35 +37,11 @@ public class OutputView {
         }
     }
 
-//    public static void printMatchItemSeller(String seller) {
-//        int idIndex = Constant.ONE;
-//        for (ArrayList<Object> list : Item.items) {
-//            if (!list.isEmpty() && list.get(list.size() - Constant.FOUR).equals(seller)) {
-//                System.out.println(DIVISIONLINE);
-//                System.out.println(idIndex);
-//                System.out.println(PRINTSELLER + list.get(1));
-//                System.out.println(PRINTITEMNAME + list.get(2));
-//                System.out.println(PRINTPRICE + list.get(3));
-//                System.out.println(PRINTREGISTERTIME + list.get(4));
-//                System.out.println(DIVISIONLINE);
-//                idIndex++;
-//            }
-//        }
-//    }
-//
-//    public static void printMatchItemName(String itemName) {
-//        int idIndex = Constant.ONE;
-//        for (ArrayList<Object> list : Item.items) {
-//            if (!list.isEmpty() && list.get(list.size() - Constant.THREE).equals(itemName)) {
-//                System.out.println(DIVISIONLINE);
-//                System.out.println(idIndex);
-//                System.out.println(PRINTSELLER + list.get(1));
-//                System.out.println(PRINTITEMNAME + list.get(2));
-//                System.out.println(PRINTPRICE + list.get(3));
-//                System.out.println(PRINTREGISTERTIME + list.get(4));
-//                System.out.println(DIVISIONLINE);
-//                idIndex++;
-//            }
-//        }
-//    }
+    public static void printMatchItemSeller(List seller) {
+        System.out.println(seller);
+    }
+
+    public static void printMatchItemName(List item) {
+        System.out.println(item);
+    }
 }
