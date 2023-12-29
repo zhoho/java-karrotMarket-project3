@@ -4,9 +4,6 @@ import com.example.constant.Constant;
 import com.example.Item;
 import com.example.constant.ErrorMessage;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class OutputView {
     public static final String PRINTSTARTMESSAGE = "당근마켓에 오신것을 환영합니다 메뉴를 선택해주세요";
     public static final String DIVISIONLINE = "--------------------------------------";
@@ -37,11 +34,23 @@ public class OutputView {
         }
     }
 
-    public static void printMatchItemSeller(List seller) {
-        System.out.println(seller);
+    public static void printMatchItemSeller(Item item) {
+        System.out.println(DIVISIONLINE);
+        System.out.println(item.getId() + Constant.ONE);
+        System.out.println(PRINTSELLER + item.getSeller());
+        System.out.println(PRINTITEMNAME + item.getItemName());
+        System.out.println(PRINTPRICE + item.getPrice());
+        System.out.println(PRINTREGISTERTIME + item.getDateTime());
+        System.out.println(DIVISIONLINE);
     }
 
-    public static void printMatchItemName(List item) {
-        System.out.println(item);
+    public static void printMatchItemName(Item item) {
+        System.out.println(DIVISIONLINE);
+        System.out.println(item.getId() + Constant.ONE);
+        System.out.println(PRINTSELLER + item.getSeller());
+        System.out.println(PRINTITEMNAME + item.getItemName());
+        System.out.println(PRINTPRICE + item.getPrice());
+        System.out.println(PRINTREGISTERTIME + item.getDateTime());
+        System.out.println(DIVISIONLINE);
     }
 }
