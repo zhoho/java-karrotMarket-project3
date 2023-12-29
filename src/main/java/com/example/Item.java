@@ -11,14 +11,13 @@ public class Item {
     private String itemName;
     private LocalDateTime dateTime;
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("M월 d일 HH시 mm분");
-
-
+    public static ArrayList<Item> items = new ArrayList<>();
     public Item(int id, String seller, String itemName, int price) {
         this.id = id;
         this.seller = seller;
         this.price = price;
         this.itemName = itemName;
-        this.dateTime = LocalDateTime.now();
+//        this.dateTime = LocalDateTime.now();
 
     }
     public int getId() {
@@ -57,6 +56,5 @@ public class Item {
         return dateTime.format(formatter);
     }
 
-    public static ArrayList<ArrayList<Object>> items = new ArrayList<>();
 
 }

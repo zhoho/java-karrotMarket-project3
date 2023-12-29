@@ -3,22 +3,17 @@ package com.example.crud;
 import com.example.Item;
 import com.example.view.InputView;
 
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Create {
     public static void addItem() {
-        Item item = InputView.getItemInfo();
-        addToItemList(item);
+        InputView.getItemInfo();
     }
 
-    public static void addToItemList(Item item) {
-        Item.items.add(new ArrayList<>(Arrays.asList(
-                String.valueOf(item.getId()),
-                item.getSeller(),
-                item.getItemName(),
-                String.valueOf(item.getPrice()),
-                item.getDateTime()
-        )));
+    public static void addToItemList(int id, String seller, String itemName, int price) {
+        Item newitem = new Item(id, seller, itemName, price);
+        Item.items.add(newitem);
     }
 }

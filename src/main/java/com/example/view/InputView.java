@@ -2,11 +2,12 @@ package com.example.view;
 
 import com.example.constant.Constant;
 import com.example.constant.ErrorMessage;
+import com.example.crud.Create;
 import com.example.crud.Delete;
 import com.example.Item;
 import com.example.crud.Update;
 
-import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class InputView {
@@ -40,15 +41,14 @@ public class InputView {
         return selectedMenu;
     }
 
-    public static Item getItemInfo() {
+    public static void getItemInfo() {
         System.out.println(PRINTADDITEMINFO);
 
         int id = getItemId();
         String seller = getItemInfoSeller();
         String itemName = getItemInfoItemName();
         int price = getItemInfoPrice();
-        Item item = new Item(id, seller, itemName, price);
-        return item;
+        Create.addToItemList(id,seller,itemName,price);
     }
 
     public static int getItemId() {
@@ -115,7 +115,7 @@ public class InputView {
         Scanner in = new Scanner(System.in);
         System.out.print(PRINTSELLERMESSAGE + ENTER + INPUTSELLER);
         String seller = in.nextLine();
-        OutputView.printMatchItemSeller(seller);
+//        OutputView.printMatchItemSeller(seller);
     }
 
     public static void getEditItemIndex() {
@@ -141,16 +141,13 @@ public class InputView {
 
         System.out.print(INPUTSELLER);
         String seller = in.nextLine();
-        Update.editToInput(indexForEdit, seller, Constant.ONE);
 
         System.out.print(INPUTITEMNAME);
         String itemName = in.nextLine();
-        Update.editToInput(indexForEdit, itemName, Constant.TWO);
 
         System.out.print(INPUTPRICE);
         String price = in.nextLine();
-        Update.editToInput(indexForEdit, price, Constant.THREE);
-    }
+        Update.editToInput(indexForEdit, seller, itemName, price);}
 
     public static void getDeleteItemIndex() {
         Scanner in = new Scanner(System.in);
@@ -166,6 +163,6 @@ public class InputView {
         Scanner in = new Scanner(System.in);
         System.out.print(PRINTSEARCHITEMNAME + ENTER + INPUTITEMNAME);
         String itemName = in.nextLine();
-        OutputView.printMatchItemName(itemName);
+//        OutputView.printMatchItemName(itemName);
     }
 }

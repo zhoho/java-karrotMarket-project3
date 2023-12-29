@@ -22,10 +22,10 @@ public class OutputView {
         for(int i = Constant.ZERO; i < Item.items.size(); i++) {
             System.out.println(DIVISIONLINE);
             System.out.println(i + Constant.ONE);
-            System.out.println(PRINTSELLER + Item.items.get(i).get(1));
-            System.out.println(PRINTITEMNAME + Item.items.get(i).get(2));
-            System.out.println(PRINTPRICE + Item.items.get(i).get(3));
-            System.out.println(PRINTREGISTERTIME + Item.items.get(i).get(4));
+            System.out.println(PRINTSELLER + Item.items.get(i).getSeller());
+            System.out.println(PRINTITEMNAME + Item.items.get(i).getItemName());
+            System.out.println(PRINTPRICE + Item.items.get(i).getPrice());
+//            System.out.println(PRINTREGISTERTIME + Item.items.get(i).getDateTime());
             System.out.println(DIVISIONLINE);
         }
     }
@@ -36,35 +36,35 @@ public class OutputView {
         }
     }
 
-    public static void printMatchItemSeller(String seller) {
-        int idIndex = Constant.ONE;
-        for (ArrayList<Object> list : Item.items) {
-            if (!list.isEmpty() && list.get(list.size() - Constant.FOUR).equals(seller)) {
-                System.out.println(DIVISIONLINE);
-                System.out.println(idIndex);
-                System.out.println(PRINTSELLER + list.get(1));
-                System.out.println(PRINTITEMNAME + list.get(2));
-                System.out.println(PRINTPRICE + list.get(3));
-                System.out.println(PRINTREGISTERTIME + list.get(4));
-                System.out.println(DIVISIONLINE);
-                idIndex++;
-            }
-        }
-    }
-
-    public static void printMatchItemName(String itemName) {
-        int idIndex = Constant.ONE;
-        for (ArrayList<Object> list : Item.items) {
-            if (!list.isEmpty() && list.get(list.size() - Constant.THREE).equals(itemName)) {
-                System.out.println(DIVISIONLINE);
-                System.out.println(idIndex);
-                System.out.println(PRINTSELLER + list.get(1));
-                System.out.println(PRINTITEMNAME + list.get(2));
-                System.out.println(PRINTPRICE + list.get(3));
-                System.out.println(PRINTREGISTERTIME + list.get(4));
-                System.out.println(DIVISIONLINE);
-                idIndex++;
-            }
-        }
-    }
+//    public static void printMatchItemSeller(String seller) {
+//        int idIndex = Constant.ONE;
+//        for (ArrayList<Object> list : Item.items) {
+//            if (!list.isEmpty() && list.get(list.size() - Constant.FOUR).equals(seller)) {
+//                System.out.println(DIVISIONLINE);
+//                System.out.println(idIndex);
+//                System.out.println(PRINTSELLER + list.get(1));
+//                System.out.println(PRINTITEMNAME + list.get(2));
+//                System.out.println(PRINTPRICE + list.get(3));
+//                System.out.println(PRINTREGISTERTIME + list.get(4));
+//                System.out.println(DIVISIONLINE);
+//                idIndex++;
+//            }
+//        }
+//    }
+//
+//    public static void printMatchItemName(String itemName) {
+//        int idIndex = Constant.ONE;
+//        for (ArrayList<Object> list : Item.items) {
+//            if (!list.isEmpty() && list.get(list.size() - Constant.THREE).equals(itemName)) {
+//                System.out.println(DIVISIONLINE);
+//                System.out.println(idIndex);
+//                System.out.println(PRINTSELLER + list.get(1));
+//                System.out.println(PRINTITEMNAME + list.get(2));
+//                System.out.println(PRINTPRICE + list.get(3));
+//                System.out.println(PRINTREGISTERTIME + list.get(4));
+//                System.out.println(DIVISIONLINE);
+//                idIndex++;
+//            }
+//        }
+//    }
 }
