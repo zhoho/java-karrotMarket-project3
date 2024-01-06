@@ -1,4 +1,4 @@
-## 주제 : 당근마켓 CRUD 기능 구현
+## 주제 : 당근마켓 CRUD 기능 구현 + SQLite
 
 #### 조건
 - [ ] ArrayList, Scanner, BufferedReader, DateTimeFormatter class 사용
