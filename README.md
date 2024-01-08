@@ -1,5 +1,8 @@
 ## 주제 : 당근마켓 CRUD 기능 구현 + SQLite
 
+## 참고 사이트 (당근 마켓)
+  - https://www.daangn.com/fleamarket/
+
 #### 조건
 - [ ] ArrayList, Scanner, BufferedReader, DateTimeFormatter class 사용
 - [x] 조회할 때 데이터 처음 번호는 1번 부터
@@ -42,37 +45,15 @@
 - [ ] db 연결
   - [ ] id index 로직 수정
   - [ ] 등록 일자, 가격 순 정렬
+  - [ ] sqlite3 데이터 관리
 - [ ] File IO
 
 ---
 
 ### Classes
-- constant
-  - Constant : 자주 사용 되는 숫자를 관리
-  - ErrorMessage(Enum) : 잘못된 입력을 받았을 때 출력할 에러 메세지를 관리
-- controller
-  - KarrotMarketController : 입력값에 따른 프로그램의 전체적인 실행을 관리
-- crud
-  - Create : 상품 추가 기능
-  - Read : 상품 이름 검색 기능
-  - Update : 상품 수정 기능
-  - Delete : 상품 등록 취소 기능
-- view
-  - InputView : 사용자 입력과 예외 처리
-  - OutputView : 화면에 보여지는 출력을 담당
-- item : 상품 데이터 관리
-- Main : 프로그램 시작과 controller와의 연결 다리 역할
+
 
 ### 실행 화면
-<img src="image/karrot1.png">
-<img src="image/karrot2.png" width="200" height="180">
-<img src="image/karrot3.png">
-<img src="image/karrot4.png">
+
 
 ### 느낀점
-- 기능별로 메서드를 나누고 한 메서드는 한가지 기능만 구현할 수 있도록 분리하다 보니 구현에 꽤 오랜 시간이 소요 되었습니다.
-- 입력값에 대한 예외 처리를 했는데 어느 정도까지 예외처리를 하는게 적절한지 고민이 되었습니다.
-- MVC 패턴의 개념을 적용하려고 노력 했는데 아직 정확히 이해 하지 못하고 구현한 것 같습니다.
-- 모든 문자열과 숫자를 상수로 처리 했는데 이렇게 모두 처리하는것이 좋은것인지에 대한 고민을 했습니다.
-- 변수와 메서드명을 보면 딱 어떤 기능을 하는 것인지 알 수 있도록 고민했는데 여전히 비슷하거나 적절하지 못한 네이밍이 있었던 것 같습니다.
-- 프로그램의 확장성을 생각하면서 구현하려고 노력했지만 잘 안된것같습니다.
