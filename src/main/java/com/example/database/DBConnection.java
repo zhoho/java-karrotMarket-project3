@@ -7,18 +7,14 @@ import java.sql.SQLException;
 public class DBConnection {
     public static Connection conn = null;
 
-    public static Connection getConnection(){
-        if(conn == null){
-            try {
+    public static Connection getConnection() {
+        try {
+            if (conn == null || conn.isClosed()) {
                 Class.forName("org.sqlite.JDBC");
-            } catch (ClassNotFoundException e) {
-                throw new RuntimeException(e);
-            }
-            try {
                 conn = DriverManager.getConnection("jdbc:sqlite:karrotMarket.db");
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
             }
+        } catch (ClassNotFoundException | SQLException e) {
+            throw new RuntimeException(e);
         }
         return conn;
     }
