@@ -10,11 +10,10 @@
 
 
 #### 주요 기능
-- [ ] 조회 (상품 조회)
+- [X] 조회 (상품 조회)
   - [x] 등록된 상품 들을 모두 출력 한다
   - [x] 각 제품별 줄바꿈 처리를 한다
   - [x] 가격, 상품명, 등록 일자 그리고 판매자를 모두 출력 한다. 
-  - [ ] 가격과 등록 일자 순으로 정렬할 수 있도록 구현 한다. (기본은 등록 일자 순, 가격은 낮은 순)
 - [x] 추가 (상품 추가)
     - [x] 판매자, 가격, 상품명 그리고 등록 일자 모두 입력 받는다.
     - [x] 상품 가격은 0원부터 1억원(100000000)이하의 값으로 설정 한다. 
@@ -27,12 +26,10 @@
     - [x] 판매자를 입력 받고 판매자가 등록한 모든 상품 목록을 출력 한다.
     - [x] 삭제할 상품의 index를 입력 받는다.
     - [x] 삭제 경고 문구가 출력 되고 "Yes"를 입력 받으면 삭제 한다.
-    - [ ] 앞의 요소가 삭제 된다면 index 자동으로 정렬 되도록
-- [ ] 검색 (상품 검색)
+    - [x] 앞의 요소가 삭제 된다면 index 자동으로 정렬 되도록
+- [X] 검색 (상품 검색)
     - [x] 상품 명을 입력 받아 일치 하는 상품이 있을 경우 출력 한다.
-    - [x] 상품명이 동일한 상품이 있을 경우 가격 낮은 순으로 정렬 하여 출력 한다.
-        - [ ] 상품과 가격이 모두 동일 하다면 등록 일자 순으로 정렬 하여 출력 한다.
-- [ ] 종료
+- [x] 종료
     - [x] 종료 경고 문구가 출력 되고 "Yes"를 입력 받으면 삭제 한다.
 
 #### 예외 처리
@@ -42,18 +39,66 @@
 - [x] 등록된 상품이 없을때 상품 전체 보기를 선택하면 에러 메시지 출력
 
 #### 추가 구현 사항
-- [ ] db 연결
-  - [ ] id index 로직 수정
-  - [ ] 등록 일자, 가격 순 정렬
-  - [ ] sqlite3 데이터 관리
-- [ ] File IO
+- [x] db 연결
+  - [x] id index 로직 수정
+  - [X] 가격 순 정렬
+  - [x] sqlite3 데이터 관리
 
 ---
 
 ### Classes
 
+- constant
+  - Constant 사용 되는 숫자 데이터 관리
+  - DBdata DB 연결시 필요한 데이터 관리
+  - ErrorMessage 잘못된 입력값에 따른 에러 메세지 관리
+- controller
+  - KarrotMarketController 입력값에 따른 프로그램 흐름 관리
+- crud (DML,DQL 생성으로 인해 controller 역할이 되었음)
+  - Create
+  - Delete
+  - Read
+  - Update
+- database
+  - DBConnection DB 연결 관리
+  - DMLService 데이터 추가, 삭제, 수정 쿼리 관리
+  
+  - ~~~
+    static final String ITEM_INSERT = "insert into karrotItem (seller, price, itemName, dateTime) " + "values (?,?,?,?) ";
+    static final String ITEM_DELETE = "delete from karrotItem where id = ? ";
+    static final String ITEM_UPDATE = "UPDATE karrotItem SET seller = ?, price = ?, itemName = ?, dateTime = ? WHERE id = ?";
+    
+  - DQLService 데이터 검색 쿼리 관리
+  
+  - ~~~
+    static final String SELECT_ALL = "select * from karrotItem ";
+    static final String SELECT_INCLUDE_NAME = "select * from karrotItem where itemName like '%' || ? || '%' order by id";
+    static final String SELECT_ORDERED_INCREASING = "select * from karrotItem order by price ASC";
+
+- view
+  - InputView 사용자 입력 관리
+  - OutputView 화면에 보여지는 출력 관리
+- Item 상품 데이터 관리
+- Main 프로그램 시작과 controller와 연결 
+
+### Database
+- sqlite
+- KarrotMarket
+  - karrotItem
+    - id
+    - seller
+    - itemName
+    - price
+    - dateTime
 
 ### 실행 화면
 
+<img src="image/karrot3_1.jpeg">
+<img src="image/karrot3_2.jpeg">
+
 
 ### 느낀점
+- DML,DQL 등 처음 접하는 개념을 처음 봤을때 어떤 것이 어떤 기능을 하고 왜 나누어져있는지 이해를 잘 
+하지 못했었는데 계속 보고 구현을 하다 보니 자연스럽게 이것들이 하는 역할 그리고 왜 나누는지에 대해서 이해할 수
+있게 되었습니다. 아쉬운점은 기본적인 기능만 구현한점과 더불어 db table을 너무 간단하게 구성했다고 생각이 들어 어떠한 데이터가 관리
+되면 좋을지에 대해서 더 생각해보고 발전시키도록 하겠습니다.
