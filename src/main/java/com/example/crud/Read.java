@@ -1,25 +1,16 @@
 package com.example.crud;
-
-import com.example.Item;
+import com.example.database.DQLService;
 import com.example.view.OutputView;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 public class Read {
     public static void searchItems(String itemName) {
-        for (Item item : Item.items) {
-            if (item.getItemName().equalsIgnoreCase(itemName)) {
-                OutputView.printMatchItemSeller(item);
-            }
-        }
+        DQLService.getDataIncludeItemName(itemName);
+        OutputView.printItems();
     }
 
-    public static void searchseller(String seller) {
-        for (Item item : Item.items) {
-            if (item.getSeller().equalsIgnoreCase(seller)) {
-                OutputView.printMatchItemName(item);
-            }
-        }
+    public static void searchItemsOrderedIncreasing() {
+        DQLService.getDataOrderedIncreasing();
+        OutputView.printItems();
     }
 }
