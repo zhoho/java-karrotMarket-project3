@@ -13,13 +13,4 @@ public class Update {
         InputView.getItemSeller();
         InputView.getEditItemIndex();
     }
-
-    public static void editToInput(int indexForEdit, String seller, String itemName, String price) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATEFORMAT);
-        String formattedDateTime = LocalDateTime.now().format(formatter);
-        if (!seller.isEmpty()) Item.items.get(indexForEdit-Constant.ONE).setSeller(seller);
-        if (!itemName.isEmpty()) Item.items.get(indexForEdit-Constant.ONE).setItemName(itemName);
-        if (!price.isEmpty()) Item.items.get(indexForEdit-Constant.ONE).setPrice(Integer.parseInt(price));
-        Item.items.get(indexForEdit-Constant.ONE).setDateTiem(formattedDateTime);
-    }
 }

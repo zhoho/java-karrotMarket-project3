@@ -1,7 +1,7 @@
 package com.example.crud;
 
 import com.example.constant.Constant;
-import com.example.Item;
+import com.example.database.DMLService;
 import com.example.view.InputView;
 
 public class Delete {
@@ -12,11 +12,12 @@ public class Delete {
 
     public static void deleteCheck(String input, int indexForDelete) {
         if(input.equals("Yes")) {
-            deleteExecute(indexForDelete);
+            if(DMLService.delete(indexForDelete) > Constant.ZERO) {
+                System.out.println("삭제 성공!");
+            }
+            else {
+                System.out.println("삭제 실패!");
+            }
         }
-    }
-
-    public static void deleteExecute(int indexForDelete) {
-        Item.items.remove(indexForDelete - Constant.ONE);
     }
 }

@@ -3,6 +3,9 @@ package com.example.crud;
 import com.example.Item;
 import com.example.view.OutputView;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class Read {
     public static void searchItems(String itemName) {
         for (Item item : Item.items) {

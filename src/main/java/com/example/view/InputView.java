@@ -7,9 +7,12 @@ import com.example.crud.Delete;
 import com.example.Item;
 import com.example.crud.Read;
 import com.example.crud.Update;
+import com.example.database.DMLService;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import static com.example.Item.items;
 
 public class InputView {
     public static final String PRINTMENU = "[1]상품 전체 보기\n[2]상품 추가\n[3]상품 수정\n[4]상품 등록 취소\n[5]상품 이름 검색\n[0]종료";
@@ -44,19 +47,10 @@ public class InputView {
 
     public static void getItemInfo() {
         System.out.println(PRINTADDITEMINFO);
-
-        int id = getItemId();
         String seller = getItemInfoSeller();
         String itemName = getItemInfoItemName();
         int price = getItemInfoPrice();
-        Create.addToItemList(id,seller,itemName,price);
-    }
-
-    public static int getItemId() {
-        //db 구현시 수정
-        int id;
-        id = Item.items.size();
-        return id;
+        DMLService.addToItemList(seller,itemName,price);
     }
 
     public static String getItemInfoSeller() {
@@ -147,16 +141,18 @@ public class InputView {
 
         System.out.print(INPUTPRICE);
         String price = in.nextLine();
-        Update.editToInput(indexForEdit, seller, itemName, price);}
+        DMLService.editToInput(seller, itemName, Integer.parseInt(price),items.get(indexForEdit - 1).getId());
+    }
 
     public static void getDeleteItemIndex() {
         Scanner in = new Scanner(System.in);
         Scanner on = new Scanner(System.in);
         System.out.println(PRINTDELETEINDEX);
         int indexForDelete = in.nextInt();
+        int id = items.get(indexForDelete - 1).getId();
         System.out.println(WARNINGDELETE);
         String input = on.nextLine();
-        Delete.deleteCheck(input, indexForDelete);
+        Delete.deleteCheck(input, id);
     }
 
     public static String getItemName() {
