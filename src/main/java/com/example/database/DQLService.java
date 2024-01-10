@@ -1,6 +1,7 @@
 package com.example.database;
 
 import com.example.Item;
+import com.example.constant.Constant;
 
 import java.sql.*;
 
@@ -35,7 +36,7 @@ public class DQLService {
         try (Connection conn = DBConnection.getConnection()){
             PreparedStatement pstmt;
             pstmt = conn.prepareStatement(SELECT_INCLUDE_NAME);
-            pstmt.setString(1, inputItemName);
+            pstmt.setString(Constant.ONE, inputItemName);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("id");
