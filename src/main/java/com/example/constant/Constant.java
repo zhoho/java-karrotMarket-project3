@@ -7,6 +7,7 @@ public class Constant {
     public static final int THREE = 3;
     public static final int FOUR = 4;
     public static final int FIVE = 5;
+    public static final int SIX = 6;
     public static final int LIMITPRICE = 100000000;
     public static final String MENUEXIT = "종료";
 }

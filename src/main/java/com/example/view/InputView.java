@@ -15,7 +15,7 @@ import java.util.Scanner;
 import static com.example.Item.items;
 
 public class InputView {
-    public static final String PRINTMENU = "[1]상품 전체 보기\n[2]상품 추가\n[3]상품 수정\n[4]상품 등록 취소\n[5]상품 이름 검색\n[0]종료";
+    public static final String PRINTMENU = "[1]상품 전체 보기\n[2]상품 추가\n[3]상품 수정\n[4]상품 등록 취소\n[5]상품 이름 검색\n[6]가격 오름차 순 보기\n[0]종료";
     public static final String PRINTADDITEMINFO = "[상품 추가]";
     public static final String PRINTEDITITEMINFO = "[상품 수정]";
     public static final String INPUTSELLER = "판매자:";
@@ -110,7 +110,7 @@ public class InputView {
         Scanner in = new Scanner(System.in);
         System.out.print(PRINTSELLERMESSAGE + ENTER + INPUTSELLER);
         String seller = in.nextLine();
-        Read.searchseller(seller);
+//        Read.searchSeller(seller);
     }
 
     public static void getEditItemIndex() {
