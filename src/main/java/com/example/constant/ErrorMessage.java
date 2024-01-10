@@ -6,7 +6,8 @@ public enum ErrorMessage {
     ITEMS_EMPTY("[ERROR] 현재 등록된 상품이 없습니다!"),
     SELLER_INPUT_EMPTY("[ERROR] 판매자 이름은 공백일 수 없습니다. 다시 입력해주세요."),
     ITEM_INPUT_EMPTY("[ERROR] 상품 이름은 공백일 수 없습니다. 다시 입력해주세요."),
-    PRICE_INPUT_EMPTY("[ERROR] 가격을 입력해야 합니다. 다시 입력해주세요.");
+    PRICE_INPUT_EMPTY("[ERROR] 가격을 입력해야 합니다. 다시 입력해주세요."),
+    INVALID_INPUT("[ERROR] 잘못된 입력");
 
     private final String message;
 

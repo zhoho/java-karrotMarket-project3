@@ -12,12 +12,19 @@ public class OutputView {
     public static final String PRINTITEMNAME = "상품명 : ";
     public static final String PRINTPRICE = "가격 : ";
     public static final String PRINTREGISTERTIME = "등록 일자 : ";
+
+    public static final String PRINTSUCCESSADD = "상품 추가 성공!";
+    public static final String PRINTFAILADD = "상품 추가 실패!";
+    public static final String PRINTSUCCESSEDIT = "상품 수정 성공!";
+    public static final String PRINTFAILEDIT = "상품 수정 실패!";
+    public static final String PRINTSUCCESSDELETE = "상품 삭제 성공!";
+    public static final String PRINTFAILDELETE = "상품 삭제 실패!";
+
     public static void printStartMessage() {
         System.out.println(PRINTSTARTMESSAGE);
     }
 
-    public static void printAllItems() {
-        DQLService.getAllData();
+    public static void printItems() {
         itemEmptyCheck();
         for(int i = Constant.ZERO; i < Item.items.size(); i++) {
             System.out.println(DIVISIONLINE);
@@ -36,27 +43,30 @@ public class OutputView {
         }
     }
 
-    public static void printMatchItemSeller(Item items) {
-        for (int i = Constant.ZERO; i < Item.items.size(); i++) {
-            System.out.println(DIVISIONLINE);
-            System.out.println(i + Constant.ONE);
-            System.out.println(PRINTSELLER + items.getSeller());
-            System.out.println(PRINTITEMNAME + items.getItemName());
-            System.out.println(PRINTPRICE + items.getPrice());
-            System.out.println(PRINTREGISTERTIME + items.getDateTime());
-            System.out.println(DIVISIONLINE);
+    public static void dbAddExecutionCheck(int checker) {
+        if(checker > 0) {
+            System.out.println(PRINTSUCCESSADD);
+        }
+        else{
+            System.out.println(PRINTFAILADD);
         }
     }
 
-    public static void printMatchItemName(Item items) {
-        for (int i = Constant.ZERO; i < Item.items.size(); i++) {
-            System.out.println(DIVISIONLINE);
-            System.out.println(i + Constant.ONE);
-            System.out.println(PRINTSELLER + items.getSeller());
-            System.out.println(PRINTITEMNAME + items.getItemName());
-            System.out.println(PRINTPRICE + items.getPrice());
-            System.out.println(PRINTREGISTERTIME + items.getDateTime());
-            System.out.println(DIVISIONLINE);
+    public static void dbDeleteExecutionCheck(int checker) {
+        if(checker > 0) {
+            System.out.println(PRINTSUCCESSDELETE);
+        }
+        else{
+            System.out.println(PRINTFAILDELETE);
+        }
+    }
+
+    public static void dbEditExecutionCheck(int checker) {
+        if(checker > 0) {
+            System.out.println(PRINTSUCCESSEDIT);
+        }
+        else{
+            System.out.println(PRINTFAILEDIT);
         }
     }
 }

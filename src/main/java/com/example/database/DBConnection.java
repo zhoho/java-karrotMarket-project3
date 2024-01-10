@@ -1,5 +1,7 @@
 package com.example.database;
 
+import com.example.constant.DBdata;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -10,8 +12,8 @@ public class DBConnection {
     public static Connection getConnection() {
         try {
             if (conn == null || conn.isClosed()) {
-                Class.forName("org.sqlite.JDBC");
-                conn = DriverManager.getConnection("jdbc:sqlite:karrotMarket.db");
+                Class.forName(DBdata.DBCLASS);
+                conn = DriverManager.getConnection(DBdata.DBURL);
             }
         } catch (ClassNotFoundException | SQLException e) {
             throw new RuntimeException(e);

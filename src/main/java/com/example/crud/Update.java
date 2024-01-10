@@ -8,7 +8,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Update {
-    public static final String DATEFORMAT = "M월 d일 HH시 mm분";
     public static void updateItem() {
         InputView.getItemSeller();
         InputView.getEditItemIndex();

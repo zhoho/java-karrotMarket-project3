@@ -1,16 +1,15 @@
 package com.example.database;
 
 import com.example.constant.Constant;
+import com.example.view.OutputView;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-
 import static com.example.crud.Create.DATEFORMAT;
 import static com.example.database.DBConnection.closeConnection;
-
 
 public class DMLService {
     static final String ITEM_INSERT = "insert into karrotItem (seller, price, itemName, dateTime) " + "values (?,?,?,?) ";
@@ -19,23 +18,15 @@ public class DMLService {
 
     static PreparedStatement pstmt;
     public static void addToItemList(String seller, String itemName, int price) {
-        int checker;
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATEFORMAT);
         String formattedDateTime = LocalDateTime.now().format(formatter);
         try(Connection conn = DBConnection.getConnection()){
             pstmt = conn.prepareStatement(ITEM_INSERT);
-            pstmt.setString(1, seller);
-            pstmt.setInt(2, price);
-            pstmt.setString(3, itemName);
-            pstmt.setString(4, formattedDateTime);
-
-            checker = pstmt.executeUpdate();
-            if(checker > 0) {
-                System.out.println("성공!");
-            }
-            else{
-                System.out.println("실패!");
-            }
+            pstmt.setString(Constant.ONE, seller);
+            pstmt.setInt(Constant.TWO, price);
+            pstmt.setString(Constant.THREE, itemName);
+            pstmt.setString(Constant.FOUR, formattedDateTime);
+            OutputView.dbAddExecutionCheck(pstmt.executeUpdate());
             closeConnection();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -46,14 +37,9 @@ public class DMLService {
         int checker;
         try(Connection conn = DBConnection.getConnection()) {
             pstmt = conn.prepareStatement(ITEM_DELETE);
-            pstmt.setInt(1,id);
+            pstmt.setInt(Constant.ONE,id);
             checker = pstmt.executeUpdate();
-            if(checker > Constant.ZERO) {
-                System.out.println("삭제 성공!");
-            }
-            else{
-                System.out.println("삭제 실패!");
-            }
+            OutputView.dbDeleteExecutionCheck(checker);
             closeConnection();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -62,24 +48,16 @@ public class DMLService {
     }
 
     public static void editToInput(String seller, String itemName, int price, int indexForEdit) {
-        int checker;
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATEFORMAT);
         String formattedDateTime = LocalDateTime.now().format(formatter);
         try(Connection conn = DBConnection.getConnection()) {
             pstmt = conn.prepareStatement(ITEM_UPDATE);
-            pstmt.setString(1, seller);
-            pstmt.setInt(2, price);
-            pstmt.setString(3, itemName);
-            pstmt.setString(4, formattedDateTime);
-            pstmt.setInt(5,indexForEdit);
-
-            checker = pstmt.executeUpdate();
-            if(checker > 0) {
-                System.out.println("성공!");
-            }
-            else{
-                System.out.println("실패!");
-            }
+            pstmt.setString(Constant.ONE, seller);
+            pstmt.setInt(Constant.TWO, price);
+            pstmt.setString(Constant.THREE, itemName);
+            pstmt.setString(Constant.FOUR, formattedDateTime);
+            pstmt.setInt(Constant.FIVE,indexForEdit);
+            OutputView.dbEditExecutionCheck(pstmt.executeUpdate());
             closeConnection();
         } catch (SQLException e) {
             throw new RuntimeException(e);
